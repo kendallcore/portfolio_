@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mukesh - Professional AI Developer & Web Engineer Portfolio">
+    <title>Mukesh | AI Developer & Software Engineer</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Background Particles -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle id="test" cx="40" cy="40" r="32"></circle>
+            </svg>
+        </div>
+        <div class="loader triangle">
+            <svg viewBox="0 0 86 80">
+                <polygon points="43 8 79 72 7 72"></polygon>
+            </svg>
+        </div>
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <rect x="8" y="8" width="64" height="64"></rect>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-text">Mukesh<span class="dot">.</span></span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-controls">
+                <button id="langToggle" class="lang-btn" aria-label="Toggle Language">
+                    EN
+                </button>
+                <button id="themeToggle" class="icon-btn" aria-label="Toggle Dark/Light Mode">
+                    <i class="fas fa-sun light-icon"></i>
+                    <i class="fas fa-moon dark-icon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero section">
+            <div class="container hero-container">
+                <div class="hero-content reveal fade-left">
+                    <span class="badge">Welcome to my universe</span>
+                    <h1 class="hero-title">
+                        Hello, I'm <span class="highlight">Mukesh</span><br>
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        I am an <span id="typing-text" class="typing-text"></span><span class="cursor">|</span>
+                    </h2>
+                    <p class="hero-desc">
+                        I bridge the gap between complex artificial intelligence algorithms and intuitive web
+                        experiences. Building scalable software solutions for the modern world.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">
+                            Explore Work <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button onclick="startVoice()" class="btn btn-secondary pulse-anim">
+                            <i class="fas fa-microphone"></i> Talk to AI Assistant
+                        </button>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/Mukesh1807r" target="_blank" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mukesh1807r/" target="_blank" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper reveal fade-right">
+                    <div class="hero-image-bg"></div>
+                    <!-- Profile Image -->
+                    <div class="hero-image">
+                        <img src="profile.jpg" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="floating-badge badge-1">
+                        <i class="fas fa-robot"></i> AI Expert
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <i class="fas fa-laptop-code"></i> Full Stack
+                    </div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section bg-alt">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">About <span class="highlight">Me</span></h2>
+                    <p class="section-subtitle">Passionate about coding, AI, and creating impactful solutions.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text reveal fade-right">
+                        <h3>Who am I?</h3>
+                        <p>I am a dedicated <strong>AI Developer & Software Engineer</strong> with a profound passion
+                            for building intelligent systems. My journey in tech started with web development and
+                            quickly expanded into machine learning and natural language processing.</p>
+                        <p>I thrive in environments that challenge me to solve complex problems and learn new
+                            technologies. When I'm not coding, you can find me exploring new AI papers or contributing
+                            to open-source communities.</p>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <h4 class="counter" data-target="1">0</h4>
+                                <p>Years Exp.</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="counter" data-target="3">0</h4>
+                                <p>+</p>
+                                <p>Projects</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="counter" data-target="0">0</h4>
+                                <p>+</p>
+                                <p>Happy Clients</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="counter" data-target="10000">0</h4>
+                                <p>+</p>
+                                <p>Lines of Code</p>
+                            </div>
+                        </div>
+                        <a href="resume.pdf" download="Mukesh_Resume.pdf" class="btn btn-primary mt-4">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
+                    <div class="about-features reveal fade-left">
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                            <div class="feature-info">
+                                <h4>AI & Machine Learning</h4>
+                                <p>Building predictive models, NLP tools, and computer vision apps.</p>
+                            </div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="feature-info">
+                                <h4>Full Stack Development</h4>
+                                <p>Creating responsive, scalable web applications from scratch.</p>
+                            </div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-cloud"></i></div>
+                            <div class="feature-info">
+                                <h4>Cloud & DevOps</h4>
+                                <p>Deploying robust architectures using AWS, Docker, and CI/CD.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services section">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">What I <span class="highlight">Do</span></h2>
+                    <p class="section-subtitle">Delivering comprehensive solutions tailored to your needs.</p>
+                </div>
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card reveal fade-up" style="transition-delay: 0.1s">
+                        <div class="service-icon"><i class="fas fa-robot"></i></div>
+                        <h3>AI Integration</h3>
+                        <p>Integrating state-of-the-art LLMs and machine learning models into your existing applications
+                            to automate workflows and enhance decision-making.</p>
+                        <a href="#contact" class="service-link">Let's Talk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="service-card reveal fade-up" style="transition-delay: 0.2s">
+                        <div class="service-icon"><i class="fas fa-code"></i></div>
+                        <h3>Web Engineering</h3>
+                        <p>Developing high-performance, responsive web applications using modern frameworks like React,
+                            Next.js, and Node.js.</p>
+                        <a href="#contact" class="service-link">Let's Talk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="service-card reveal fade-up" style="transition-delay: 0.3s">
+                        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>App Development</h3>
+                        <p>Creating cross-platform mobile applications ensuring a seamless user experience across iOS
+                            and Android devices.</p>
+                        <a href="#contact" class="service-link">Let's Talk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="service-card reveal fade-up" style="transition-delay: 0.4s">
+                        <div class="service-icon"><i class="fas fa-database"></i></div>
+                        <h3>Data Architecture</h3>
+                        <p>Designing scalable database schemas and data pipelines that handle large volumes of
+                            information securely and efficiently.</p>
+                        <a href="#contact" class="service-link">Let's Talk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills section bg-alt">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+                    <p class="section-subtitle">A blend of AI expertise and modern web technologies.</p>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skills-category reveal fade-right">
+                        <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML & CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript / TypeScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>React & Next.js</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category reveal fade-up">
+                        <h3><i class="fas fa-server"></i> Backend</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python (Django/FastAPI)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Node.js / Express</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>SQL & NoSQL</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category reveal fade-left">
+                        <h3><i class="fas fa-brain"></i> AI / ML</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>PyTorch & TensorFlow</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>NLP & LLMs</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Computer Vision</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Circular Skills / Tools -->
+                <div class="tools-grid reveal fade-up mt-5">
+                    <div class="tool-item">
+                        <i class="fab fa-docker"></i>
+                        <span>Docker</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fab fa-aws"></i>
+                        <span>AWS</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fab fa-linux"></i>
+                        <span>Linux</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-cube"></i>
+                        <span>Kubernetes</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fab fa-figma"></i>
+                        <span>Figma</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education -->
+        <section id="experience" class="timeline-section section">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">My <span class="highlight">Journey</span></h2>
+                    <p class="section-subtitle">Experience and Education timeline.</p>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <div class="timeline">
+                        <div class="timeline-item reveal fade-up">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2024 - Present</div>
+                            <div class="timeline-content">
+                                <h3>Bachelor of Technology in Artificial Intelligence and Machine Learning</h3>
+                                <h4>Saveetha Engineering College</h4>
+                                <p>Currently pursuing my undergraduate degree with a focus on core computer science
+                                    subjects, algorithms, software engineering, and modern technologies. Actively
+                                    participating in technical symposiums and coding events.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal fade-up">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2022 - 2023</div>
+                            <div class="timeline-content">
+                                <h3>Python and c++ programmer</h3>
+                                <h4>CSC</h4>
+                                <p>Built a strong foundation in programming and system-level software. Developed
+                                    projects utilizing object-oriented principles, data structures, and algorithms to
+                                    solve complex computational problems.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal fade-up">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2016 - 2024</div>
+                            <div class="timeline-content">
+                                <h3>6th std to 12th std</h3>
+                                <h4>Dr RadhaKrishnan Matriculation Higher Secondary School</h4>
+                                <p>Completed my secondary and higher secondary education with a strong emphasis on
+                                    mathematics and science, building the analytical foundation necessary for my
+                                    engineering career.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal fade-up">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2010 - 2016</div>
+                            <div class="timeline-content">
+                                <h3>1st std to 5th std</h3>
+                                <h4>Angel BabyLand Matriculation Higher Secondary School</h4>
+                                <p>Early education where I developed my foundational learning skills, curiosity for
+                                    problem-solving, and initial academic interests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section bg-alt">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+                    <p class="section-subtitle">A selection of my best work in AI and Web Development.</p>
+                </div>
+
+                <!-- Portfolio Filters -->
+                <div class="project-filters reveal fade-up">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="ai">AI / ML</button>
+                    <button class="filter-btn" data-filter="web">Web Dev</button>
+                    <button class="filter-btn" data-filter="app">Apps</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card reveal fade-up mix ai" data-title="AI Voice Assistant"
+                        data-desc="A highly responsive voice-controlled assistant built with Python, speech recognition, and integrated with an advanced LLM backend to manage daily tasks, answer queries, and control IoT devices."
+                        data-tech="Python, PyTorch, React, WebSocket" data-link="https://github.com/mukesh/ai-voice">
+                        <div class="project-img">
+                            <div class="img-placeholder"><i class="fas fa-microphone-alt"></i></div>
+                            <div class="project-overlay">
+                                <button class="btn btn-primary view-project-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">AI / ML</span>
+                            <h3>Neural Voice Assistant</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card reveal fade-up mix web" data-title="Enterprise ERP System"
+                        data-desc="A full-stack enterprise resource planning web application. Features include real-time inventory tracking, secure role-based access control, and dynamic reporting dashboards."
+                        data-tech="React, Node.js, PostgreSQL, Redis" data-link="https://github.com/mukesh/erp-system">
+                        <div class="project-img">
+                            <div class="img-placeholder"><i class="fas fa-chart-line"></i></div>
+                            <div class="project-overlay">
+                                <button class="btn btn-primary view-project-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Web Dev</span>
+                            <h3>Enterprise ERP System</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card reveal fade-up mix ai" data-title="Resume Analyzer AI"
+                        data-desc="An AI-powered tool that scores resumes against job descriptions using advanced NLP techniques. Extracts key skills, provides a match percentage, and offers suggestions for improvement."
+                        data-tech="FastAPI, HuggingFace, Next.js" data-link="https://github.com/mukesh/resume-analyzer">
+                        <div class="project-img">
+                            <div class="img-placeholder"><i class="fas fa-file-alt"></i></div>
+                            <div class="project-overlay">
+                                <button class="btn btn-primary view-project-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">AI / ML</span>
+                            <h3>Smart Resume Analyzer</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card reveal fade-up mix app" data-title="HealthTrack Mobile"
+                        data-desc="A cross-platform mobile application for tracking daily fitness metrics, integrating wearable device data, and using machine learning to predict health trends."
+                        data-tech="React Native, Firebase, TensorFlow Lite"
+                        data-link="https://github.com/mukesh/health-track">
+                        <div class="project-img">
+                            <div class="img-placeholder"><i class="fas fa-heartbeat"></i></div>
+                            <div class="project-overlay">
+                                <button class="btn btn-primary view-project-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Apps</span>
+                            <h3>HealthTrack Mobile</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-card reveal fade-up mix web" data-title="Crypto Portfolio Tracker"
+                        data-desc="A real-time cryptocurrency portfolio dashboard. Utilizes WebSockets for live price updates, integrates multiple exchange APIs, and provides deep analytical charts."
+                        data-tech="Vue.js, Express, D3.js" data-link="https://github.com/mukesh/crypto-track">
+                        <div class="project-img">
+                            <div class="img-placeholder"><i class="fab fa-bitcoin"></i></div>
+                            <div class="project-overlay">
+                                <button class="btn btn-primary view-project-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Web Dev</span>
+                            <h3>Crypto Portfolio Tracker</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="project-card reveal fade-up mix ai" data-title="Vision Defect Detector"
+                        data-desc="A computer vision application used in manufacturing to identify microscopic defects in electronic components in real-time using custom trained CNN models."
+                        data-tech="OpenCV, TensorFlow, C++" data-link="https://github.com/mukesh/vision-defect">
+                        <div class="project-img">
+                            <div class="img-placeholder"><i class="fas fa-eye"></i></div>
+                            <div class="project-overlay">
+                                <button class="btn btn-primary view-project-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">AI / ML</span>
+                            <h3>Vision Defect Detector</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5 reveal fade-up">
+                    <a href="https://github.com/mukesh1807r" target="_blank" class="btn btn-secondary"><i
+                            class="fab fa-github"></i> View More on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog section">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">Latest <span class="highlight">Insights</span></h2>
+                    <p class="section-subtitle">Thoughts, ideas, and tutorials on AI and Web Engineering.</p>
+                </div>
+
+                <div class="blog-grid">
+                    <!-- Blog Post 1 -->
+                    <div class="blog-card reveal fade-up" data-tilt>
+                        <div class="blog-img">
+                            <div class="img-placeholder"><i class="fas fa-brain"></i></div>
+                            <span class="blog-date">Apr 15, 2026</span>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-tag">AI / ML</span>
+                            <h3><a href="#">The Future of Large Language Models in Enterprise Apps</a></h3>
+                            <p>Exploring how fine-tuned LLMs can revolutionize internal tools, automating customer
+                                support and generating insights from unstructured data.</p>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 2 -->
+                    <div class="blog-card reveal fade-up" data-tilt style="transition-delay: 0.1s">
+                        <div class="blog-img">
+                            <div class="img-placeholder"><i class="fas fa-code"></i></div>
+                            <span class="blog-date">Mar 22, 2026</span>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-tag">Web Dev</span>
+                            <h3><a href="#">Mastering CSS Grid and Subgrid</a></h3>
+                            <p>A deep dive into advanced CSS layouts. Learn how to build highly responsive, complex
+                                dashboards with minimal CSS lines.</p>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 3 -->
+                    <div class="blog-card reveal fade-up" data-tilt style="transition-delay: 0.2s">
+                        <div class="blog-img">
+                            <div class="img-placeholder"><i class="fas fa-server"></i></div>
+                            <span class="blog-date">Feb 10, 2026</span>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-tag">Architecture</span>
+                            <h3><a href="#">Deploying Scalable Microservices with Kubernetes</a></h3>
+                            <p>Step-by-step guide to container orchestration. Ensuring high availability and
+                                zero-downtime deployments for your APIs.</p>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5 reveal fade-up">
+                    <a href="#" class="btn btn-secondary outline">View All Articles</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials section">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">Client <span class="highlight">Reviews</span></h2>
+                    <p class="section-subtitle">What people say about my work.</p>
+                </div>
+
+                <div class="testimonial-container reveal fade-up">
+                    <div class="testimonial-slide active">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">Mukesh is an exceptional AI developer. His ability to translate
+                            complex machine learning concepts into practical, scalable applications transformed our
+                            product offering.</p>
+                        <div class="client-info">
+                            <div class="client-avatar">S</div>
+                            <div>
+                                <h4>Sarah Jenkins</h4>
+                                <span>CTO at TechNova</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">Working with Mukesh was a breeze. He delivered our enterprise web
+                            application ahead of schedule, with impeccable code quality and a beautiful UI.</p>
+                        <div class="client-info">
+                            <div class="client-avatar">M</div>
+                            <div>
+                                <h4>Michael Chang</h4>
+                                <span>Product Manager</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-controls">
+                        <button class="testi-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="testi-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section bg-alt">
+            <div class="container">
+                <div class="section-header reveal fade-up">
+                    <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
+                    <p class="section-subtitle">Have a project in mind? Let's discuss your requirements.</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <div class="contact-info reveal fade-right">
+                        <h3>Let's build something awesome together!</h3>
+                        <p>Feel free to reach out for collaborations, consulting, or just to say hi. I'm always open to
+                            discussing new projects and creative ideas.</p>
+
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="icon"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a href="mailto:mukesh1807r@gmail.com">mukesh1807r@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <a href="tel:+919344328717">+91 9344328717</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Tamil Nadu, India (Remote)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper reveal fade-left">
+                        <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit"
+                            method="POST" novalidate>
+                            <!-- Replace with your Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="67165eee-30e4-434e-9c7b-3c1acac0446f">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required class="form-control" placeholder=" ">
+                                <label for="name" class="form-label">Your Name</label>
+                                <span class="error-text">Please enter your name.</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required class="form-control"
+                                    placeholder=" ">
+                                <label for="email" class="form-label">Your Email</label>
+                                <span class="error-text">Please enter a valid email address.</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" required class="form-control"
+                                    placeholder=" ">
+                                <label for="subject" class="form-label">Subject</label>
+                                <span class="error-text">Please enter a subject.</span>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" required class="form-control" placeholder=" "
+                                    rows="5"></textarea>
+                                <label for="message" class="form-label">Your Message</label>
+                                <span class="error-text">Please enter your message.</span>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <i class="fas fa-paper-plane icon"></i>
+                                <div class="spinner"></div>
+                            </button>
+                            <div class="form-success">Message sent successfully! I'll get back to you soon.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Mukesh<span class="dot">.</span></h2>
+                    <p>Building the future with Artificial Intelligence and robust Web Technologies.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="https://github.com/Mukesh1807r"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mukesh1807r/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-medium-m"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Mukesh AI Developer. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart text-danger"></i> & Code</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-img-container">
+                    <!-- Placeholder icon will be injected via JS -->
+                    <div id="modal-img-placeholder" class="img-placeholder modal-img"></div>
+                </div>
+                <div class="modal-info">
+                    <span id="modal-category" class="project-category">Category</span>
+                    <h2 id="modal-title">Project Title</h2>
+                    <div class="modal-tech" id="modal-tech">
+                        <!-- Tech stacks injected here -->
+                    </div>
+                    <p id="modal-desc" class="modal-desc">Detailed project description goes here...</p>
+                    <div class="modal-actions">
+                        <a href="#" id="modal-link" target="_blank" class="btn btn-primary"><i
+                                class="fab fa-github"></i> View Repository</a>
+                        <button class="btn btn-secondary outline">Live Demo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot Interface -->
+    <div id="chatbot" class="chatbot-container collapsed">
+        <div class="chatbot-header" id="chat-header">
+            <div class="chatbot-title">
+                <div class="avatar"><i class="fas fa-robot"></i></div>
+                <div>
+                    <h4>AI</h4>
+                    <span class="status">Online</span>
+                </div>
+            </div>
+            <div class="chatbot-controls">
+                <button id="chat-toggle-btn"><i class="fas fa-chevron-up"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-body" id="chat-body">
+            <div class="chat-message bot">
+                <div class="msg-content">Hi! I'm Mukesh's AI assistant. Ask me anything about his skills, experience, or
+                    projects!</div>
+            </div>
+            <!-- Dynamic messages injected here -->
+        </div>
+        <div class="chatbot-footer">
+            <form id="chat-form">
+                <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off">
+                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Voice Control Feedback -->
+    <div id="voice-overlay" class="voice-overlay hidden">
+        <div class="voice-pulse"></div>
+        <i class="fas fa-microphone fa-3x"></i>
+        <h3>Listening...</h3>
+        <p>Try saying: "Show projects" or "Scroll down"</p>
+        <button id="stop-voice" class="btn btn-secondary mt-3">Cancel</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+</body>
+
+</html>
