@@ -840,10 +840,16 @@
     <!-- Voice Control Feedback -->
     <div id="voice-overlay" class="voice-overlay hidden">
         <div class="voice-pulse"></div>
-        <i class="fas fa-microphone fa-3x"></i>
-        <h3>Listening...</h3>
-        <p>Try saying: "Show projects" or "Scroll down"</p>
-        <button id="stop-voice" class="btn btn-secondary mt-3">Cancel</button>
+        <div class="voice-content">
+            <i class="fas fa-microphone fa-3x mb-4"></i>
+            <h3 id="voice-status">AI Assistant is ready</h3>
+            <div class="transcript-container">
+                <p id="voice-transcript" class="transcript-text"></p>
+                <p id="ai-response" class="ai-response-text"></p>
+            </div>
+            <p class="suggestions">Try saying: "Who is Mukesh?", "Can you do a project?", or "Show me projects"</p>
+            <button id="stop-voice" class="btn btn-secondary mt-3">Close Assistant</button>
+        </div>
     </div>
 
     <!-- Scripts -->

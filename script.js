@@ -597,20 +597,185 @@ document.addEventListener('DOMContentLoaded', () => {
 //   Global Functions (accessible from HTML inline handlers)
 // ==========================================================================
 
-// Voice Control Mock
-function startVoice() {
-    const overlay = document.getElementById('voice-overlay');
-    overlay.classList.remove('hidden');
+// ==========================================================================
+//   Voice Assistant Logic (Speech Recognition & Synthesis)
+// ==========================================================================
 
-    // Simulate listening and taking action after 3 seconds
-    setTimeout(() => {
-        overlay.classList.add('hidden');
-        // Randomly simulate scrolling to projects as a demo
-        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-    }, 3000);
+const voiceOverlay = document.getElementById('voice-overlay');
+const voiceStatus = document.getElementById('voice-status');
+const voiceTranscript = document.getElementById('voice-transcript');
+const aiResponse = document.getElementById('ai-response');
+const stopVoiceBtn = document.getElementById('stop-voice');
+
+let recognition;
+let isAssistantTalking = false;
+
+// Initialize Speech Recognition if supported
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    recognition.onstart = () => {
+        voiceStatus.textContent = "Listening...";
+        voiceOverlay.classList.remove('hidden');
+    };
+
+    recognition.onresult = (event) => {
+        let interimTranscript = '';
+        let finalTranscript = '';
+
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+            if (event.results[i].isFinal) {
+                finalTranscript += event.results[i][0].transcript;
+            } else {
+                interimTranscript += event.results[i][0].transcript;
+            }
+        }
+
+        if (finalTranscript) {
+            voiceTranscript.textContent = finalTranscript;
+            handleVoiceCommand(finalTranscript.toLowerCase());
+        } else {
+            voiceTranscript.textContent = interimTranscript;
+        }
+    };
+
+    recognition.onerror = (event) => {
+        console.error("Speech Recognition Error:", event.error);
+        voiceStatus.textContent = "Error: " + event.error;
+    };
+
+    recognition.onend = () => {
+        if (!voiceOverlay.classList.contains('hidden') && !isAssistantTalking) {
+            recognition.start(); // Keep listening unless closed or talking
+        }
+    };
 }
 
-document.getElementById('stop-voice').addEventListener('click', () => {
-    document.getElementById('voice-overlay').classList.add('hidden');
-});
+function speak(text, callback) {
+    if (!('speechSynthesis' in window)) return;
+
+    // Stop recognition while talking to avoid feedback
+    if (recognition) recognition.stop();
+    isAssistantTalking = true;
+
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.volume = 1;
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    // Try to find a good female/assistant voice
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoice = voices.find(v => v.name.includes('Google') || v.name.includes('Female') || v.name.includes('Assistant')) || voices[0];
+    if (preferredVoice) utterance.voice = preferredVoice;
+
+    utterance.onend = () => {
+        isAssistantTalking = false;
+        if (!voiceOverlay.classList.contains('hidden') && recognition) {
+            try {
+                recognition.start();
+            } catch (e) {
+                console.log("Recognition already started");
+            }
+        }
+        if (callback) callback();
+    };
+
+    aiResponse.textContent = text;
+    window.speechSynthesis.speak(utterance);
+}
+
+function handleVoiceCommand(command) {
+    console.log("Command received:", command);
+
+    if (command.includes('who are you') || command.includes('your name') || command.includes('who is mukesh')) {
+        speak("Mukesh is an AI Developer and Software Engineer pursuing B.Tech at Saveetha Engineering College. He specializes in AI, machine learning, and full stack development.");
+    } 
+    else if (command.includes('project') && (command.includes('do') || command.includes('can you'))) {
+        speak("Yes, I can certainly help with projects. Please contact my boss Mukesh for more details.");
+    }
+    else if (command.includes('show') && command.includes('project')) {
+        speak("Sure, showing you Mukesh's projects now.", () => {
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+            closeVoiceAssistant();
+        });
+    }
+    else if (command.includes('contact') || command.includes('hire') || command.includes('email')) {
+        speak("Navigating to the contact section so you can get in touch.", () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            closeVoiceAssistant();
+        });
+    }
+    else if (command.includes('skills')) {
+        speak("Here are the technical skills Mukesh excels in.", () => {
+            document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
+            closeVoiceAssistant();
+        });
+    }
+    else if (command.includes('experience') || command.includes('journey')) {
+        speak("Let's look at Mukesh's professional journey.", () => {
+            document.getElementById('experience').scrollIntoView({ behavior: 'smooth' });
+            closeVoiceAssistant();
+        });
+    }
+    else if (command.includes('about')) {
+        speak("Scrolling to the about section for more details about Mukesh.", () => {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+            closeVoiceAssistant();
+        });
+    }
+    else if (command.includes('education') || command.includes('college') || command.includes('study')) {
+        speak("Mukesh is studying at Saveetha Engineering College, focusing on Artificial Intelligence and Machine Learning.");
+    }
+    else if (command.includes('github') || command.includes('linkedin') || command.includes('social')) {
+        speak("You can find Mukesh on GitHub and LinkedIn. The links are in the social section at the bottom of the page.");
+    }
+    else if (command.includes('resume') || command.includes('cv')) {
+        speak("You can download Mukesh's resume from the about section.");
+    }
+    else if (command.includes('close') || command.includes('stop') || command.includes('exit')) {
+        speak("Goodbye! Have a great day.", () => {
+            closeVoiceAssistant();
+        });
+    }
+    else {
+        // More general questions
+        if (command.includes('hello') || command.includes('hi')) {
+            speak("Hello! I am Mukesh's assistant. How can I help you today?");
+        } else if (command.includes('how are you')) {
+            speak("I am doing great, thank you for asking! I'm ready to help you explore Mukesh's portfolio.");
+        }
+    }
+}
+
+function startVoice() {
+    if (!recognition) {
+        alert("Speech Recognition is not supported in your browser. Please try Chrome.");
+        return;
+    }
+
+    voiceOverlay.classList.remove('hidden');
+    voiceTranscript.textContent = "";
+    aiResponse.textContent = "";
+    
+    // Initial greeting
+    speak("Hi, I am Mukesh's assistant. You can ask me about his skills, projects, or even if I can do a project for you.");
+}
+
+function closeVoiceAssistant() {
+    voiceOverlay.classList.add('hidden');
+    if (recognition) recognition.stop();
+    window.speechSynthesis.cancel();
+    isAssistantTalking = false;
+}
+
+if (stopVoiceBtn) {
+    stopVoiceBtn.addEventListener('click', closeVoiceAssistant);
+}
 

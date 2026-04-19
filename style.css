@@ -1604,7 +1604,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(2, 6, 23, 0.95);
     z-index: 10000;
     display: flex;
     flex-direction: column;
@@ -1612,7 +1612,41 @@ p {
     justify-content: center;
     color: white;
     text-align: center;
+    backdrop-filter: blur(10px);
 }
+
+.voice-content {
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 10;
+}
+
+.transcript-container {
+    margin: 2rem 0;
+    min-height: 100px;
+}
+
+.transcript-text {
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.ai-response-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.4;
+}
+
+.suggestions {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+.mb-4 { margin-bottom: 1.5rem; }
 
 .voice-overlay.hidden {
     display: none;
