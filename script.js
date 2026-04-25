@@ -1,6 +1,6 @@
 /**
  * Professional Portfolio Interactivity
- * Author: Mukesh
+ * Author: PRAJAN
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => showSlide(currentSlide + 1), 5000);
     }
 
-    // 12. Contact Form Validation
+    // 12. Contact Form — Web3Forms submission
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.querySelector('.form-success');
     const submitBtn = document.querySelector('.submit-btn');
@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             formSuccess.style.backgroundColor = "rgba(239, 68, 68, 0.1)";
                         }
                     })
-                    .catch(error => {
+                    .catch(() => {
                         formSuccess.textContent = "Something went wrong. Please check your internet connection.";
                         formSuccess.style.display = 'block';
                         formSuccess.style.color = "#ef4444";
@@ -485,7 +485,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         formSuccess.style.backgroundColor = "rgba(239, 68, 68, 0.1)";
                     })
                     .finally(() => {
-                        // Reset button state
                         submitBtn.querySelector('.btn-text').style.opacity = '1';
                         submitBtn.querySelector('.icon').style.opacity = '1';
                         submitBtn.querySelector('.spinner').style.display = 'none';
@@ -522,12 +521,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mock AI Responses
     const botResponses = {
-        'hi': "Hello there! I'm Mukesh's virtual assistant. How can I help you today?",
+        'hi': "Hello there! I'm PRAJAN's virtual assistant. How can I help you today?",
         'hello': "Hi! Looking to hire a great software engineer?",
-        'skills': "Mukesh is highly skilled in Python, C++, React, and AI/ML. Check out the Skills section!",
+        'skills': "PRAJAN is highly skilled in Python, C++, React, and AI/ML. Check out the Skills section!",
         'projects': "He has built several amazing projects. Feel free to explore the Projects section.",
-        'contact': "You can email him at mukesh1807r@gmail.com or use the contact form at the bottom of the page.",
-        'default': "That's interesting! I'm still a simple bot, but Mukesh can answer that better. Please use the contact form to send him an email!"
+        'contact': "You can email him at prajanss23@gmail.com or use the contact form at the bottom of the page.",
+        'default': "That's interesting! I'm still a simple bot, but PRAJAN can answer that better. Please use the contact form to send him an email!"
     };
 
     function addMessage(text, sender) {
@@ -694,14 +693,14 @@ function speak(text, callback) {
 function handleVoiceCommand(command) {
     console.log("Command received:", command);
 
-    if (command.includes('who are you') || command.includes('your name') || command.includes('who is mukesh')) {
-        speak("Mukesh is an AI Developer and Software Engineer pursuing B.Tech at Saveetha Engineering College. He specializes in AI, machine learning, and full stack development.");
+    if (command.includes('who are you') || command.includes('your name') || command.includes('who is prajan')) {
+        speak("PRAJAN is an AI Developer and Software Engineer pursuing B.Tech at Saveetha Engineering College. He specializes in AI, machine learning, and full stack development.");
     } 
     else if (command.includes('project') && (command.includes('do') || command.includes('can you'))) {
-        speak("Yes, I can certainly help with projects. Please contact my boss Mukesh for more details.");
+        speak("Yes, I can certainly help with projects. Please contact my boss PRAJAN for more details.");
     }
     else if (command.includes('show') && command.includes('project')) {
-        speak("Sure, showing you Mukesh's projects now.", () => {
+        speak("Sure, showing you PRAJAN's projects now.", () => {
             document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
             closeVoiceAssistant();
         });
@@ -713,31 +712,31 @@ function handleVoiceCommand(command) {
         });
     }
     else if (command.includes('skills')) {
-        speak("Here are the technical skills Mukesh excels in.", () => {
+        speak("Here are the technical skills PRAJAN excels in.", () => {
             document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
             closeVoiceAssistant();
         });
     }
     else if (command.includes('experience') || command.includes('journey')) {
-        speak("Let's look at Mukesh's professional journey.", () => {
+        speak("Let's look at PRAJAN's professional journey.", () => {
             document.getElementById('experience').scrollIntoView({ behavior: 'smooth' });
             closeVoiceAssistant();
         });
     }
     else if (command.includes('about')) {
-        speak("Scrolling to the about section for more details about Mukesh.", () => {
+        speak("Scrolling to the about section for more details about PRAJAN.", () => {
             document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
             closeVoiceAssistant();
         });
     }
     else if (command.includes('education') || command.includes('college') || command.includes('study')) {
-        speak("Mukesh is studying at Saveetha Engineering College, focusing on Artificial Intelligence and Machine Learning.");
+        speak("PRAJAN is studying at Saveetha Engineering College, focusing on Artificial Intelligence and Machine Learning.");
     }
     else if (command.includes('github') || command.includes('linkedin') || command.includes('social')) {
-        speak("You can find Mukesh on GitHub and LinkedIn. The links are in the social section at the bottom of the page.");
+        speak("You can find PRAJAN on GitHub and LinkedIn. The links are in the social section at the bottom of the page.");
     }
     else if (command.includes('resume') || command.includes('cv')) {
-        speak("You can download Mukesh's resume from the about section.");
+        speak("You can download PRAJAN's resume from the about section.");
     }
     else if (command.includes('close') || command.includes('stop') || command.includes('exit')) {
         speak("Goodbye! Have a great day.", () => {
@@ -747,9 +746,9 @@ function handleVoiceCommand(command) {
     else {
         // More general questions
         if (command.includes('hello') || command.includes('hi')) {
-            speak("Hello! I am Mukesh's assistant. How can I help you today?");
+            speak("Hello! I am PRAJAN's assistant. How can I help you today?");
         } else if (command.includes('how are you')) {
-            speak("I am doing great, thank you for asking! I'm ready to help you explore Mukesh's portfolio.");
+            speak("I am doing great, thank you for asking! I'm ready to help you explore PRAJAN's portfolio.");
         }
     }
 }
@@ -765,7 +764,7 @@ function startVoice() {
     aiResponse.textContent = "";
     
     // Initial greeting
-    speak("Hi, I am Mukesh's assistant. You can ask me about his skills, projects, or even if I can do a project for you.");
+    speak("Hi, I am PRAJAN's assistant. You can ask me about his skills, projects, or even if I can do a project for you.");
 }
 
 function closeVoiceAssistant() {
